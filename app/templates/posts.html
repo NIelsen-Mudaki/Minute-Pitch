@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% from 'macro.html' import display_pitches%}
+
+% block content %}
+
+<div>
+    {{ display_pitches(posts) }}
+</div>
+
+{% endblock %}

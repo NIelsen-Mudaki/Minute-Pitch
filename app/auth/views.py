@@ -12,7 +12,7 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         user = User.query.filter_by(username=login_form.username.data).first()
-        if (user.username == login_form.username.data):
+        if (User.username == login_form.username.data):
             login_user(user, remember=login_form.remember.data)
             return redirect(url_for('main.home'))
         else:
@@ -38,7 +38,7 @@ def sign_up():
 
             flash('Account has been created successfully')
 
-            return redirect(url_for('main.index'))
+            return redirect(url_for('auth.login'))
 
     return render_template('/signup.html', form=form)
 
@@ -46,4 +46,4 @@ def sign_up():
 @auth.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('auth.login'))

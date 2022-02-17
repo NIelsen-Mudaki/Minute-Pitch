@@ -12,6 +12,10 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255))
     password = db.Column(db.String(255))
 
+    def save(self):
+        db.session.add()
+        db.session.commit()
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()

@@ -11,8 +11,9 @@ app = Flask(__name__)
 
 login_manager = LoginManager(app)
 
+
 mail = Mail(app)
-login_manager.login_view = 'main.index'
+login_manager.login_view = 'auth.login'
 login_manager.session_protection = 'strong'
 
 db = SQLAlchemy()
