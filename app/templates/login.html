@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+
+    <div id="particles-js" class="container1">
+        <div id="vick" class="division wrapper fadeInDown">
+            <h3 class="text-center login-text" id="login"> Login</h3>
+            <div class="division" id="centered-card">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">{{wtf.quick_form(login_form)}}</div>
+                    <div class="col-md-3"></div>
+                </div>
+                <p class="text-center" id="option-signup"> <a href="/signup">Don't have an account? Sign Up.</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock%}

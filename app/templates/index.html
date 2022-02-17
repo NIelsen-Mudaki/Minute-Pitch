@@ -1,17 +1,27 @@
+{% extends 'base.html'%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minute Pitch</title>
+    {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Minute Pitch | Get a minute to pitch your idea </title>
+        {% endif %}
 </head>
 <body>
+    <!--content block-->
+    {% block content %}
 
-    <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1 style="font-size:40px">One Minute Pitch:</h1>
-        
-        <p style="font-size:40px;">You only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?</p>
+    <div class="container">
+        <div class="col-md-12 p-lg-5 mx-auto my-5">
+            <h1 style="font-size:30px">One Minute Pitch:</h1>
+            <p style="font-size:20px;">You only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?</p>
+        </div>
     </div>
+
+    {% endblock %}
 </body>
 </html>

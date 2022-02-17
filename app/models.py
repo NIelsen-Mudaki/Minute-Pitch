@@ -9,12 +9,8 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    password = db.Column(db.String(255), nullable=False)
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+    email = db.Column(db.String(255))
+    password = db.Column(db.String(255))
 
     def delete(self):
         db.session.delete(self)
@@ -37,9 +33,9 @@ def user_loader(user_id):
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.String, nullable=False)
-    post = db.Column(db.String, nullable=False)
+    title = db.Column(db.String(255))
+    user_id = db.Column(db.String)
+    post = db.Column(db.String(3000))
 
 
     def save(self):

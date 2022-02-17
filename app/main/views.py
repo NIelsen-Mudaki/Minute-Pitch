@@ -8,6 +8,36 @@ from ..models import Post, User
 
 @main.route('/')
 def index():
-    posts = Post.query.all()
     
-    return render_template('index.html', posts=posts)
+    title = 'Minute Pitch | Get a minute to pitch your idea'
+    return render_template('index.html',title=title)
+
+@main.route('/posts')
+@login_required
+def posts():
+    posts = Post.query.all()
+    user = current_user
+    return render_template('pitch.html', posts=posts, user=user)
+
+@main.route('/new_post', methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        user_id = current_user._get_current_object().id
+        post_obj = Post(post=post, title=title, category=category, user_id=user_id)
+        post_obj.save()
+        return redirect(url_for('main.index'))
+    return render_template('pitch.html', form=form)
+
+@main.route('/user')
+@login_required
+def user():
+    username = current_user.username
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        return ('not found')
+    return render_template('profile.html', user=user)
