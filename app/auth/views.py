@@ -14,7 +14,7 @@ def login():
         user = User.query.filter_by(username=login_form.username.data).first()
         if (User.username == login_form.username.data):
             login_user(user, remember=login_form.remember.data)
-            return redirect(url_for('main.home'))
+            return redirect(url_for('main/posts'))
         else:
             flash('Invalid login details')
     title = "User login"
@@ -32,7 +32,8 @@ def sign_up():
 
         if form.validate_on_submit():
             user = User(username=form.username.data,
-                         email=form.email.data)
+                         email=form.email.data,
+                         password=form.password.data)
             db.session.add(user)
             db.session.commit()
 

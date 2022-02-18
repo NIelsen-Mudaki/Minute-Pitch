@@ -26,4 +26,5 @@ def make_shell_context():
 
 if __name__ == '__main__':
     manager.run()
+    db.create_all()
     #app.run()

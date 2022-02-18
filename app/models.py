@@ -7,7 +7,7 @@ from app import db, login_manager
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,nullable=False,unique=True)
     username = db.Column(db.String(255), nullable=False, unique=True)
     email = db.Column(db.String(255))
     password = db.Column(db.String(255))
@@ -38,7 +38,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
-    user_id = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     post = db.Column(db.String(3000))
 
 
