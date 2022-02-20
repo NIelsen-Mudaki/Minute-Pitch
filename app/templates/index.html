@@ -1,33 +1,33 @@
 {% extends 'base.html'%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Minute Pitch | Get a minute to pitch your idea </title>
-        {% endif %}
-</head>
-<body>
-    <!--content block-->
-    {% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if title %}
+            <title> {{ title }}</title>
+            {% else %}
+            <title> Minute Pitch | Get a minute to pitch your idea </title>
+            {% endif %}
+    </head>
+    <body>
+        <!--content block-->
+        {% block content %}
 
-    <div class="container">
-        <div class="col-md-12 p-lg-5 mx-auto my-5">
-            <h1 class="text-center" style="font-size:30px">One Minute Pitch</h1>
-            <hr>
-            <p style="font-size:20px;display: inline; align-content: space-around;">You only have 60 seconds to impress someone. 1 minute can make or break you. <br>
-                How do we make sure that you use your 1 minute to actually say something meaningful?</p>
+        <div class="container">
+            <div class="col-md-12 p-lg-5 mx-auto my-5">
+                <h1 class="text-center" style="font-size:30px">One Minute Pitch</h1>
+                <hr>
+                <p style="font-size:20px;display: inline; align-content: space-around;">You only have 60 seconds to impress someone. 1 minute can make or break you. <br>
+                    How do we make sure that you use your 1 minute to actually say something meaningful?</p>
+            </div>
+            <div id="buttons d-block mx-auto" style="margin-top:100px;padding: 40px;">
+                <p class="text-center"><a class="btn btn-outline-primary" href="/new_post"style="font-size:40px">Pitch your idea</a></p>
+                <p class="text-center"><a class="btn btn-outline-primary" href="/posts"style="font-size:40px">View Posts</a></p>                
+            </div>
         </div>
-        <div id="buttons d-block mx-auto" style="margin-top:100px;padding: 40px;">
-            <p class="text-center"><a class="btn btn-outline-primary" href="/new_post"style="font-size:40px">Pitch your idea</a></p>
-            <p class="text-center"><a class="btn btn-outline-primary" href="/posts"style="font-size:40px">View Posts</a></p>                
-        </div>
-    </div>
 
-    {% endblock %}
-</body>
+        {% endblock %}
+    </body>
 </html>

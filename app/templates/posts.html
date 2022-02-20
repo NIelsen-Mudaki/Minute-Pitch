@@ -1,6 +1,8 @@
 {% extends 'base.html'%}
-{% from 'macro.html' import display_pitches%}
+{% from 'macro.html' import display_posts%}
 
-<div>
-    {{ display_pitches(posts) }}
+<div class="card">
+    {% block content %}
+    {{ display_posts(posts) }}
+    {% endblock %}
 </div>

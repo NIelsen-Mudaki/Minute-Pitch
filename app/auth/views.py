@@ -1,7 +1,7 @@
 from flask import flash, render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
-from app.auth import auth
+from . import auth
 from app.main.forms import LoginForm,SignupForm
 from app.models import User
 from .. import db
@@ -12,39 +12,38 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         user = User.query.filter_by(username=login_form.username.data).first()
-        if (User.username == login_form.username.data):
-            login_user(user, remember=login_form.remember.data)
-            return redirect(url_for('main/posts'))
+        if user is not None and user.check_password(login_form.password.data):
+            login_user(user)
+            return redirect(request.args.get("next") or url_for("main.index"))
         else:
             flash('Invalid login details')
     title = "User login"
-    return render_template('/login.html', login_form=login_form, title=title)
+    return render_template('auth/login.html', login_form=login_form, title=title)
 
 
 @auth.route('/signup', methods=["GET", "POST"])
 def sign_up():
     form = SignupForm()
-    get_user = User.query.filter_by(username=form.username.data).first()
-    if get_user:
-        flash("The username already exists!")
+    if form.validate_on_submit():
+        password=form.password.data
+        user = User(username=form.username.data,
+                    email=form.email.data)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
 
-    else:
+        flash('Account has been created successfully')
 
-        if form.validate_on_submit():
-            user = User(username=form.username.data,
-                         email=form.email.data,
-                         password=form.password.data)
-            db.session.add(user)
-            db.session.commit()
+        return redirect(url_for('auth.login'))
 
-            flash('Account has been created successfully')
-
-            return redirect(url_for('auth.login'))
-
-    return render_template('/signup.html', form=form)
+    return render_template('auth/signup.html', form=form)
 
 
 @auth.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
+
+@auth.route('/tests')
+def test():
+    return 'Hello'
