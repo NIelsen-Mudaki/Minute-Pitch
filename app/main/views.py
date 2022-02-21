@@ -26,7 +26,6 @@ def new_post():
     if form.validate_on_submit():
         title = form.title.data
         post = form.post.data
-        #user_id = User._get_current_object().id
         user_id = current_user.id
         post_object = Post(post=post, title=title, user_id=user_id)
         post_object.save()
