@@ -17,7 +17,7 @@ Minute Pitch is a python based application that allows a user to pitch their ide
 
 ## Link to live site
 
-
+<https://nielpitch.herokuapp.com/>
 
 ## Installation
 
@@ -63,7 +63,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ​
-##### Author's Info
+
+### Author's Info
 
 * Slack - Nielsen Mudaki
 * Email - jumbanielsen@gmail.com
