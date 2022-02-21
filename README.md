@@ -1,4 +1,4 @@
-# Delani Studio
+# Minute Pitch
 
 ## By Nielsen Mudaki
 
